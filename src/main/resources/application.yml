@@ -6,6 +6,7 @@ spring:
     max-request-size: 20MB
   main:
     banner-mode: off
+  profiles.active: dev
 
 server:
   port: 8080

@@ -5,8 +5,10 @@ import com.google.common.base.Predicate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.context.request.async.DeferredResult;
+import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.schema.WildcardType;
@@ -17,7 +19,6 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 import static springfox.documentation.schema.AlternateTypeRules.newRule;
 
@@ -27,6 +28,7 @@ import static springfox.documentation.schema.AlternateTypeRules.newRule;
 @EnableSwagger2
 @RequiredArgsConstructor
 @Configuration
+@Profile({"dev", "it"})
 public class Swagger2Config {
 
     /** typeResolver */
@@ -67,18 +69,17 @@ public class Swagger2Config {
      * @return ApiInfo
      */
     private ApiInfo apiInfo() {
-        return new ApiInfo(
-                "Chronos Sample API",
-                "description of this api",
-                "v1",
-                "terms of service URL",
-                new Contact(
-                        "contactName",
-                        "contactUrl",
-                        "contactEmail"),
-                "licence",
-                "licenseUrl",
-                new ArrayList<>()
-        );
+        return new ApiInfoBuilder()
+                .title("Chronos Sample API")
+                .description("description of this api")
+                .version("v1")
+                .termsOfServiceUrl("My terms of service URL")
+                .contact(new Contact(
+                        "myContactName",
+                        "myContactUrl",
+                        "myContactEmail"))
+                .license("myLicence")
+                .licenseUrl("myLicenseUrl")
+                .build();
     }
 }
