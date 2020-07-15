@@ -9,12 +9,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class ChronosApplication {
 
-    /**
-     * Main
-     * @param args Arguments
-     */
-    public static void main(String[] args) {
-        SpringApplication.run(ChronosApplication.class, args);
-    }
+  /**
+   * Main
+   *
+   * @param args Arguments
+   */
+  public static void main(String[] args) {
+    SpringApplication.run(ChronosApplication.class, args);
+  }
 
 }

@@ -5,15 +5,18 @@ import lombok.NonNull;
 
 /**
  * ユーザエンティティ
- * Created by @shionit on 2020/05/30.
  */
 @Data
 public class User {
 
-    /** ユーザID */
-    @NonNull
-    private String id;
+  /**
+   * ユーザID
+   */
+  @NonNull
+  private String id;
 
-    /** ユーザ名称 */
-    private String name;
+  /**
+   * ユーザ名称
+   */
+  private String name;
 }
