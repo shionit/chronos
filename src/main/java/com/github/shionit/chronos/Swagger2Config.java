@@ -1,7 +1,10 @@
 package com.github.shionit.chronos;
 
+import static springfox.documentation.schema.AlternateTypeRules.newRule;
+
 import com.fasterxml.classmate.TypeResolver;
 import com.google.common.base.Predicate;
+import java.time.LocalDate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,10 +21,6 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import java.time.LocalDate;
-
-import static springfox.documentation.schema.AlternateTypeRules.newRule;
-
 /**
  * Configuration for Swagger2
  */
@@ -31,55 +30,60 @@ import static springfox.documentation.schema.AlternateTypeRules.newRule;
 @Profile({"dev", "it"})
 public class Swagger2Config {
 
-    /** typeResolver */
-    private final TypeResolver typeResolver;
+  /**
+   * typeResolver
+   */
+  private final TypeResolver typeResolver;
 
-    /**
-     * API Docket definition
-     * @return Docket
-     */
-    @Bean
-    public Docket myApi() {
-        // https://springfox.github.io/springfox/docs/current/
-        return new Docket(DocumentationType.SWAGGER_2)
-                .select()
-                    .apis(RequestHandlerSelectors.any())
-                    .paths(paths())
-                    .build()
-                .pathMapping("/")
-                .directModelSubstitute(LocalDate.class, String.class)
-                .genericModelSubstitutes(ResponseEntity.class)
-                .alternateTypeRules(
-                        newRule(typeResolver.resolve(DeferredResult.class,
-                                typeResolver.resolve(ResponseEntity.class, WildcardType.class)),
-                                typeResolver.resolve(WildcardType.class)))
-                .apiInfo(apiInfo());
-    }
+  /**
+   * API Docket definition
+   *
+   * @return Docket
+   */
+  @Bean
+  public Docket myApi() {
+    // https://springfox.github.io/springfox/docs/current/
+    return new Docket(DocumentationType.SWAGGER_2)
+        .select()
+        .apis(RequestHandlerSelectors.any())
+        .paths(paths())
+        .build()
+        .pathMapping("/")
+        .directModelSubstitute(LocalDate.class, String.class)
+        .genericModelSubstitutes(ResponseEntity.class)
+        .alternateTypeRules(
+            newRule(typeResolver.resolve(DeferredResult.class,
+                typeResolver.resolve(ResponseEntity.class, WildcardType.class)),
+                typeResolver.resolve(WildcardType.class)))
+        .apiInfo(apiInfo());
+  }
 
-    /**
-     * ドキュメント生成の対象とするAPIのURLを返す
-     * @return ドキュメント生成対象のAPIのURL
-     */
-    private Predicate<String> paths() {
-        return PathSelectors.any();
-    }
+  /**
+   * ドキュメント生成の対象とするAPIのURLを返す
+   *
+   * @return ドキュメント生成対象のAPIのURL
+   */
+  private Predicate<String> paths() {
+    return PathSelectors.any();
+  }
 
-    /**
-     * Api information
-     * @return ApiInfo
-     */
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .title("Chronos Sample API")
-                .description("description of this api")
-                .version("v1")
-                .termsOfServiceUrl("My terms of service URL")
-                .contact(new Contact(
-                        "myContactName",
-                        "myContactUrl",
-                        "myContactEmail"))
-                .license("myLicence")
-                .licenseUrl("myLicenseUrl")
-                .build();
-    }
+  /**
+   * Api information
+   *
+   * @return ApiInfo
+   */
+  private ApiInfo apiInfo() {
+    return new ApiInfoBuilder()
+        .title("Chronos Sample API")
+        .description("description of this api")
+        .version("v1")
+        .termsOfServiceUrl("My terms of service URL")
+        .contact(new Contact(
+            "myContactName",
+            "myContactUrl",
+            "myContactEmail"))
+        .license("myLicence")
+        .licenseUrl("myLicenseUrl")
+        .build();
+  }
 }
