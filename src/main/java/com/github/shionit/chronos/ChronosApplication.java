@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Application entry point
  */
 @SpringBootApplication
-public class ChronosApplication {
+public class ChronosApplication { // NOPMD
 
   /**
    * Main
