@@ -8,7 +8,7 @@ spring:
     banner-mode: off
   profiles.active: dev
   jpa:
-    hibernate.ddl-auto: create-drop
+    hibernate.ddl-auto: none
     show-sql: true
     package-to-scan: com.github.shionit.chronos.model
 

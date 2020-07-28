@@ -35,9 +35,11 @@ dependencies {
   compile "com.google.guava:guava:${guavaVer}"
   compile "io.springfox:springfox-swagger2:${swaggerVer}"
   compile "io.springfox:springfox-swagger-ui:${swaggerVer}"
+  compile "org.flywaydb:flyway-core"
   runtimeOnly "com.h2database:h2"
   testAnnotationProcessor "org.projectlombok:lombok"
   testCompileOnly "org.projectlombok:lombok"
+  testRuntime "org.flywaydb:flyway-core"
   testImplementation('org.springframework.boot:spring-boot-starter-test') {
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
   }
