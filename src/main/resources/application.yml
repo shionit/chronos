@@ -7,6 +7,10 @@ spring:
   main:
     banner-mode: off
   profiles.active: dev
+  jpa:
+    hibernate.ddl-auto: create-drop
+    show-sql: true
+    package-to-scan: com.github.shionit.chronos.model
 
 server:
   port: 8080
@@ -21,3 +25,11 @@ logging:
     org.springframework: WARN
     org.hibernate: WARN
     com.netflix: WARN
+
+extension:
+  datasource:
+    default:
+      url: ${DB_DEFAULT_JDBC_URL:jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}
+      username: ${DB_DEFAULT_JDBC_USERNAME:}
+      password: ${DB_DEFAULT_JDBC_PASSWORD:}
+

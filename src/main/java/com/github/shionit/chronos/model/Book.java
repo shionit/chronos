@@ -1,20 +1,24 @@
 package com.github.shionit.chronos.model;
 
-import lombok.Builder;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 /**
  * 書籍エンティティ
  */
 @Data
-@Builder
+@Entity
+@NoArgsConstructor
 public class Book {
 
   /**
    * 書籍ID
    */
   @NonNull
+  @Id
   private Long id;
 
   /**
