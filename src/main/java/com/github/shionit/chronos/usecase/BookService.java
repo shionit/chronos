@@ -1,11 +1,10 @@
 package com.github.shionit.chronos.usecase;
 
 import com.github.shionit.chronos.model.Book;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,15 +18,11 @@ public class BookService {
   /**
    * mock data
    */
-  private static final Map<Long, Book> MOCK_BOOKS;
-
-  static {
-    final Map<Long, Book> books = new ConcurrentHashMap<>();
-    books.put(1L, Book.builder().id(1L).title("This is me.").isbn("123-444-56").build());
-    books.put(2L, Book.builder().id(2L).title("Hello world").isbn("246-777-89").build());
-    books.put(3L, Book.builder().id(3L).title("Apple pen").isbn("369-000-54").build());
-    MOCK_BOOKS = Collections.unmodifiableMap(books);
-  }
+  private static final Map<Long, Book> MOCK_BOOKS = ImmutableMap.of(
+      1L, Book.builder().id(1L).title("This is me.").isbn("123-444-56").build(),
+      2L, Book.builder().id(2L).title("Hello world").isbn("246-777-89").build(),
+      3L, Book.builder().id(3L).title("Apple pen").isbn("369-000-54").build()
+  );
 
   /**
    * 書籍を取得する。
