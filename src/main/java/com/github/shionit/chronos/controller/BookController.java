@@ -3,6 +3,7 @@ package com.github.shionit.chronos.controller;
 import com.github.shionit.chronos.model.Book;
 import com.github.shionit.chronos.usecase.BookService;
 import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,7 +43,7 @@ public class BookController {
    * @return 書籍
    */
   @GetMapping("/{id}")
-  public Book getBook(@PathVariable("id") Long id) {
+  public Optional<Book> getBook(@PathVariable("id") Long id) {
     log.info("getBook called. param {}", id);
     return bookService.getBook(id);
   }
