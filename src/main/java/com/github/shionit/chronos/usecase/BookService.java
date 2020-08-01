@@ -1,6 +1,7 @@
 package com.github.shionit.chronos.usecase;
 
 import com.github.shionit.chronos.model.Book;
+import com.github.shionit.chronos.model.Book.CreateBook;
 import com.github.shionit.chronos.model.repository.BookRepository;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +36,17 @@ public class BookService {
    * @param id 書籍ID
    * @return 書籍
    */
-  public Optional<Book> getBook(Long id) {
+  public Optional<Book> getBook(final Long id) {
     return bookRepository.findById(id);
+  }
+
+  /**
+   * 書籍を登録／更新する。
+   *
+   * @param book 書籍登録パラメータ
+   * @return 更新後の書籍
+   */
+  public Book saveBook(final CreateBook book) {
+    return bookRepository.save(book.toEntity());
   }
 }
