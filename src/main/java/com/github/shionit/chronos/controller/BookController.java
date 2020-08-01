@@ -28,7 +28,7 @@ public class BookController {
   /**
    * 書籍の一覧を取得する
    *
-   * @return 本のリスト
+   * @return 書籍のリスト
    */
   @GetMapping("/")
   public List<Book> getBooks() {

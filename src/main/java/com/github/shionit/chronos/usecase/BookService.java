@@ -2,10 +2,10 @@ package com.github.shionit.chronos.usecase;
 
 import com.github.shionit.chronos.model.Book;
 import com.github.shionit.chronos.model.repository.BookRepository;
-import com.google.common.collect.Lists;
-import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import org.eclipse.collections.api.factory.Lists;
+import org.eclipse.collections.api.list.MutableList;
 import org.springframework.stereotype.Service;
 
 /**
@@ -25,8 +25,8 @@ public class BookService {
    *
    * @return 書籍のリスト
    */
-  public List<Book> getBooks() {
-    return Lists.newArrayList(bookRepository.findAll());
+  public MutableList<Book> getBooks() {
+    return Lists.mutable.ofAll(bookRepository.findAll());
   }
 
   /**

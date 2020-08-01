@@ -36,6 +36,8 @@ dependencies {
   compile "io.springfox:springfox-swagger2:${swaggerVer}"
   compile "io.springfox:springfox-swagger-ui:${swaggerVer}"
   compile "org.flywaydb:flyway-core"
+  compile "org.eclipse.collections:eclipse-collections-api:${eclipseCollectionVer}"
+  compile "org.eclipse.collections:eclipse-collections:${eclipseCollectionVer}"
   runtimeOnly "com.h2database:h2"
   testAnnotationProcessor "org.projectlombok:lombok"
   testCompileOnly "org.projectlombok:lombok"
