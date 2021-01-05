@@ -29,6 +29,8 @@
 		"vscjava.vscode-java-pack",
 		"pivotal.vscode-boot-dev-pack",
 		"GabrielBB.vscode-lombok",
+		"naco-siren.gradle-language",
+		"richardwillis.vscode-gradle",
 		"ms-vsliveshare.vsliveshare",
 		"github.vscode-pull-request-github"
 	],
