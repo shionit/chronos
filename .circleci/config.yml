@@ -43,13 +43,6 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
-      # Build Docs
-      - run:
-          name: Gradle build (Documents)
-          command: gradle javadoc
-      - store_artifacts:
-          path: build/docs/
-
       # Run unit tests
       - run:
           name: Run unit tests
